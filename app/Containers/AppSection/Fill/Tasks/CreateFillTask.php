@@ -4,6 +4,8 @@ namespace App\Containers\AppSection\Fill\Tasks;
 
 use App\Containers\AppSection\Fill\Data\Repositories\FillRepository;
 use App\Containers\AppSection\Fill\Models\Fill;
+use App\Containers\AppSection\Form\Models\Form;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
 class CreateFillTask extends ParentTask
@@ -12,6 +14,12 @@ class CreateFillTask extends ParentTask
 
     public function run(array $dataFill): Fill | \Throwable
     {
+        $form = Form::find($dataFill['form_id']);
+
+        if (!$form) {
+            throw new NotFoundException('Registro não encontrado.');
+        }
+
         try {
             $newFill = $this->repository->create($dataFill);
 

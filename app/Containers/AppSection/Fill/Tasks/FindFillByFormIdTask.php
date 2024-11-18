@@ -3,6 +3,7 @@
 namespace App\Containers\AppSection\Fill\Tasks;
 
 use App\Containers\AppSection\Fill\Data\Repositories\FillRepository;
+use App\Ship\Exceptions\NotFoundException;
 use App\Ship\Parents\Tasks\Task as ParentTask;
 
 class FindFillByFormIdTask extends ParentTask
@@ -13,6 +14,12 @@ class FindFillByFormIdTask extends ParentTask
 
     public function run(string $form_id)
     {
-        return $this->fillRepository->findWhere(['form_id' => $form_id])->first();
+        $fill = $this->fillRepository->findWhere(['form_id' => $form_id])->first();
+
+        if ($fill) {
+            throw new NotFoundException('Registro não encontrado.');
+        }
+
+        return $fill;
     }
 }
