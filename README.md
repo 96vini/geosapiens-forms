@@ -1,115 +1,69 @@
-<p align="center">
-<a href="https://github.com/apiato/apiato/actions/workflows/tests.yaml">
-<img src="https://img.shields.io/github/actions/workflow/status/apiato/apiato/tests.yaml?label=tests" alt="tests status">
-</a>
-<a href="https://codecov.io/gh/apiato/apiato" > 
- <img src="https://img.shields.io/codecov/c/github/apiato/apiato?token=siiyEg5AC9" alt="code coverage"/> 
-</a>
-<a href="https://packagist.org/packages/apiato/apiato">
-<img src="https://img.shields.io/packagist/v/apiato/apiato" alt="latest stable version">
-</a>
-<br>
-<a href="https://packagist.org/packages/apiato/apiato">
-<img src="https://img.shields.io/packagist/dt/apiato/apiato" alt="total downloads">
-</a>
-<a href="https://github.com/apiato/apiato">
-<img src="https://img.shields.io/github/license/apiato/apiato" alt="license">
-</a>
-<a href="https://discord.gg/ryPcV4KM5k">
-<img src="https://img.shields.io/discord/800815227839053834?logo=discord&label=chat" alt="chat">
-</a>
-</p>
+# GeoSapiens Forms Installation Guide
 
-<p align="center">
-   <img src="https://github.com/apiato/documentation/blob/master/images/apiato.jpg" alt="Apiato Logo"/>
-</p>
-<h3 align="center">Build scalable API's faster | With PHP 8.0 and Laravel 10.0</h3>
+This guide will walk you through the steps to set up and run the APIATO application on your system using Docker and Laravel Sail.
 
-## About Apiato
+---
 
-Apiato is a framework for building scalable and testable API-Centric Applications with PHP, build on top of Laravel.
+## Prerequisites
 
-It is designed to help you build scalable API's faster, by providing tools and functionalities that facilitate the
-development of any API-Centric App.
+1. **Docker**  
+   Ensure Docker is installed and running on your system.  
+   - [Install Docker](https://docs.docker.com/get-docker/)
 
-Apiato is built using [Porto](https://github.com/Mahmoudz/Porto),
-a new architectural pattern and comes with an amazing list of [features](http://apiato.io/):
+2. **Composer**  
+   Make sure you have Composer installed to manage PHP dependencies.  
+   - [Install Composer](https://getcomposer.org/download/)
 
-- [Role-Based Access Control](https://apiato.io/docs/core-features/authorization).
-- [API Documentations generator](https://apiato.io/docs/additional-features/documentation).
-- [Auto ID hashing](https://apiato.io/docs/core-features/hash-id).
-- [API versioning](https://apiato.io/docs/core-features/api-versioning).
-- [Localization](https://apiato.io/docs/additional-features/localization).
-- [Code generator](https://apiato.io/docs/core-features/code-generator).
-- [Shallow ETag](https://apiato.io/docs/core-features/etag).
-- [Social Authentication](https://apiato.io/docs/pacakges/social-authentication).
-- [Query Parameters support](https://apiato.io/docs/core-features/query-parameters).
+---
 
+## Installation Steps
 
-## Learning Apiato
-Apiato has an extensive and thorough [documentation](https://apiato.io/docs).
+### Step 1: Install Composer Dependencies
 
-## Support and Community
-For free community support, join our [Discord server](https://discord.gg/ryPcV4KM5k).
+Run the following command in the project directory to install all required dependencies:
 
-## Contributing
-Thank you for considering contributing to the Apiato framework! The contribution guide can be found in the [Apiato documentation](https://apiato.io/docs/contribution-guide).
+`composer install`
 
-## Code of Conduct
-In order to ensure that the Apiato community is welcoming to all, please review and abide by the [Code of Conduct](https://apiato.io/docs/contribution-guide#code-of-conduct).
+### Step 2: Add a Sail Alias
 
-## Security Vulnerabilities
-If you discover a security vulnerability within Apiato,
-please send an e-mail to Mohammad Alavi via [mohammad.alavi1990@gmail.com](mailto:mohammad.alavi1990@gmail.com).
-All security vulnerabilities will be promptly addressed.
+To simplify the use of Laravel Sail commands, add the following alias to your shell configuration file:
 
-## Project Maintainers
-<table>
-  <tbody>
-     <tr>
-        <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/mahmoudz.png?s=150">
-            <br>
-            <strong>Mahmoud Zalt</strong>
-            <br>
-            <a href="https://github.com/Mahmoudz">@mahmoudz</a>
-        </td>
-         <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/mohammad-alavi.png?s=150">
-            <br>
-            <strong>Mohammad Alavi</strong>
-            <br>
-            <a href="https://github.com/mohammad-alavi">@Mohammad-Alavi</a>
-        </td>
-          <td align="center" valign="top">
-            <img width="125" height="125" src="https://github.com/mderis.png?s=150">
-            <br>
-            <strong>Moslem Deris</strong>
-            <br>
-            <a href="https://github.com/mderis">@mderis</a>
-          </td>
-     </tr>
-  </tbody>
-</table>
+- If you use `zsh`, edit `~/.zshrc`:
+  `alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'`
+- If you use `bash`, edit `~/.bashrc`:
+  `alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'`
 
-[comment]: # (Open Collective Tiers)
+After adding the alias, reload your shell configuration:
+`source ~/.zshrc # for zsh users`  
+`source ~/.bashrc # for bash users`
 
-[contributors-src]: https://contrib.rocks/image?repo=apiato/apiato
+### Step 3: Start the Application Containers
 
-[contributors-href]: https://github.com/apiato/apiato/graphs/contributors
+Run the following command to build and start the application containers in detached mode:
 
-[backers-src]: https://opencollective.com/apiato/tiers/awesome-backers.svg?width=890&button=false&isActive=true
+`sail up -d`
 
-[backers-href]: https://opencollective.com/apiato#contributors
+### Step 4: Update Your Hosts File
 
-[gold-sponsors-src]: https://opencollective.com/apiato/tiers/gold-sponsors.svg?avatarHeight=80&width=890&button=false&isActive=true
+Edit your `/etc/hosts` file to add the following entry for local development:
 
-[gold-sponsors-href]: https://opencollective.com/apiato#contributors
+`127.0.0.1       form.geosapiens.local`
 
-[silver-sponsors-src]: https://opencollective.com/apiato/tiers/silver-sponsors.svg?avatarHeight=64&width=890&button=false&isActive=true
+### Step 5: Generate the Application Key
 
-[silver-sponsors-href]: https://opencollective.com/apiato#contributors
+Run the command below to generate the application encryption key:
 
-[bronze-sponsors-src]: https://opencollective.com/apiato/tiers/bronze-sponsors.svg?avatarHeight=48&width=890&button=false&isActive=true
+`sail artisan key:generate`
 
-[bronze-sponsors-href]: https://opencollective.com/apiato#contributors
+### Step 6: Run the Database Migrations
+
+Ensure the containers are up and built, then run the migrations:
+
+`sail artisan migrate`
+
+---
+
+## Accessing the Application
+
+Once the setup is complete, you can access the application in your browser at:
+
