@@ -61,6 +61,12 @@ Ensure the containers are up and built, then run the migrations:
 
 `sail artisan migrate`
 
+### Step 7: Check cache from routes
+
+Execute the command bellow to remove any previous cache in application:
+
+`sail artisan route:cache`
+
 ---
 
 ## Accessing the Application
