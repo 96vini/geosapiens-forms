@@ -16,8 +16,8 @@ class FindFillByFormIdTask extends ParentTask
     {
         $fill = $this->fillRepository->findWhere(['form_id' => $form_id])->first();
 
-        if ($fill) {
-            throw new NotFoundException('Registro não encontrado.');
+        if (!$fill) {
+            throw new NotFoundException('Fill not found.');
         }
 
         return $fill;

@@ -17,7 +17,7 @@ class CreateFillTask extends ParentTask
         $form = Form::find($dataFill['form_id']);
 
         if (!$form) {
-            throw new NotFoundException('Registro não encontrado.');
+            throw new NotFoundException('Form not found');
         }
 
         try {
