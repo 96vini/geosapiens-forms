@@ -6,6 +6,14 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 
 class CreateFormRequest extends ParentRequest
 {
+    protected array $decode = [
+        'form_id',
+    ];
+
+    protected array $urlParameters = [
+        'form_id',
+    ];
+
     public function rules(): array
     {
         return [

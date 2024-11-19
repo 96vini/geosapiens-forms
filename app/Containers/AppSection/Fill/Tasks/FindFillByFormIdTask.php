@@ -14,12 +14,10 @@ class FindFillByFormIdTask extends ParentTask
 
     public function run(string $form_id)
     {
-        $fill = $this->fillRepository->findWhere(['form_id' => $form_id])->first();
+        $fills = $this->fillRepository->findWhere(['form_id' => $form_id])->first();
 
-        if (!$fill) {
-            throw new NotFoundException('Fill not found.');
-        }
+        if(!$fills) throw new NotFoundException('Fills not found');
 
-        return $fill;
+        return $fills;
     }
 }

@@ -12,14 +12,8 @@ class CreateFillTask extends ParentTask
 {
     public function __construct(private readonly FillRepository $repository) {}
 
-    public function run(array $dataFill): Fill | \Throwable
+    public function run(array $dataFill): Fill
     {
-        $form = Form::find($dataFill['form_id']);
-
-        if (!$form) {
-            throw new NotFoundException('Form not found');
-        }
-
         try {
             $newFill = $this->repository->create($dataFill);
 

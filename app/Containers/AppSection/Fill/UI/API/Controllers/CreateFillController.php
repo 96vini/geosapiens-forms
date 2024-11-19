@@ -16,6 +16,6 @@ class CreateFillController extends ApiController
     public function __invoke(CreateFillRequest $request) {
         $newFill = $this->createFillAction->run($request->validated());
 
-        return $this->transform($newFill, CreateFillTransformer::class);
+        return $this->created($this->transform($newFill, CreateFillTransformer::class));
     }
 }

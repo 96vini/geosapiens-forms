@@ -16,6 +16,6 @@ class CreateFormController extends ApiController
     public function __invoke(CreateFormRequest $request) {
         $formData = $this->createFormAction->run($request->validated());
         
-        return $this->transform($formData, CreateFormTransformer::class);
+        return $this->created($this->transform($formData, CreateFormTransformer::class));
     }
 }
