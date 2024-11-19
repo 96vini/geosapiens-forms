@@ -69,6 +69,10 @@ Execute the command bellow to remove any previous cache in application:
 
 ---
 
+## For Insomnia
+
+Import the `GeoSapiensRequestInsomnia.yaml` file into your Insomnia workspace to access all system-related requests.
+
 ## Accessing the Application
 
 Once the setup is complete, you can access the application in your browser at:
